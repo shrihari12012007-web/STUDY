@@ -57,7 +57,7 @@ async function sendMessage() {
     // =========================================================
     // 🔑 PASTE YOUR REAL API KEY BELOW
     // =========================================================
-    const API_KEY = "PASTE_YOUR_REAL_KEY_HERE"; 
+    const API_KEY = "AIzaSyBhnWAGcS-oY8fgaQUIGjPcneVqW28NrAY"; 
     // =========================================================
 
     // Using the official v1 production server
