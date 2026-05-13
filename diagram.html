@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>NEET Diagrams</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div id="main-bg-container"></div>
+
+    <div id="main-dashboard"
+         style="display:block; opacity:1;">
+
+        <h1 class="shimmer-title">
+            █▓▒▒░░░ Interactive Human Body ░░░▒▒▓█
+        </h1>
+
+        <div id="neet-diagram-container">
+
+            <div class="human-body">
+
+                <!-- Brain -->
+                <button class="part"
+                    style="top:10%; left:50%;"
+                    onclick="showInfo(
+                    'Brain',
+                    'Controls memory, intelligence and body coordination.'
+                )">
+                    🧠
+                </button>
+
+                <!-- Eyes -->
+                <button class="part"
+                    style="top:18%; left:50%;"
+                    onclick="showInfo(
+                    'Eyes',
+                    'Eyes help vision and detect light.'
+                )">
+                    👀
+                </button>
+
+                <!-- Heart -->
+                <button class="part"
+                    style="top:32%; left:50%;"
+                    onclick="showInfo(
+                    'Heart',
+                    'Human heart pumps blood throughout the body.'
+                )">
+                    ❤️
+                </button>
+
+                <!-- Lungs -->
+                <button class="part"
+                    style="top:28%; left:40%;"
+                    onclick="showInfo(
+                    'Lungs',
+                    'Lungs help in respiration and gas exchange.'
+                )">
+                    🫁
+                </button>
+
+                <!-- Liver -->
+                <button class="part"
+                    style="top:42%; left:60%;"
+                    onclick="showInfo(
+                    'Liver',
+                    'Largest gland in human body.'
+                )">
+                    🟤
+                </button>
+
+                <!-- Stomach -->
+                <button class="part"
+                    style="top:48%; left:50%;"
+                    onclick="showInfo(
+                    'Stomach',
+                    'Stomach helps digestion using acids and enzymes.'
+                )">
+                    🍽️
+                </button>
+
+                <!-- Kidney -->
+                <button class="part"
+                    style="top:58%; left:45%;"
+                    onclick="showInfo(
+                    'Kidneys',
+                    'Kidneys filter blood and form urine.'
+                )">
+                    🫘
+                </button>
+
+                <!-- Bones -->
+                <button class="part"
+                    style="top:75%; left:50%;"
+                    onclick="showInfo(
+                    'Bones',
+                    'Bones provide support and protection.'
+                )">
+                    🦴
+                </button>
+
+            </div>
+
+            <div id="info-box">
+                Click any organ to view explanation.
+            </div>
+            <div id="main-dashboard"
+                 style="display:block; opacity:1;">
+            <a href="index.html" class="back-btn">
+                ← Back To Dashboard
+            </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function showInfo(title, description){
+
+            document.getElementById("info-box").innerHTML = `
+                <h2>${title}</h2>
+                <p>${description}</p>
+            `;
+        }
+
+    </script>
+   
+
+document.body.style.overflowY = 'auto';
+document.documentElement.style.overflowY = 'auto';
+
+</script>
+
+</body>
+
+</html>

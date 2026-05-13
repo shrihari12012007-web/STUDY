@@ -1,183 +1,478 @@
-/* =========================================
-   BASE STYLES & BACKGROUND
-   ========================================= */
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #fbc2eb);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    padding: 20px;
-    color: #4a4a4a;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-@keyframes gradientBG {
+body, html {
+    height: 100%;
+    overflow-x: hidden; /* Prevent scrolling before unlock */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: #000; /* Fallback color */
+    color: #fff;
+}
+
+/* This is the main background image that covers the whole screen */
+#main-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Make sure 'bg.jpg' is in the same folder as this HTML file */
+    background: url('bg.jpg') center/cover no-repeat;
+    z-index: 1; /* Lowest layer */
+    transition: filter 1s ease; /* For smooth transitions */
+}
+
+/* =========================================
+   2. ANIMATED SPLASH/LOCK LAYERS
+   ========================================= */
+@keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* =========================================
-   ANIME CHARACTER POSITIONING & ANIMATION
-   ========================================= */
-
-/* The Anime Girl (Top Left Corner - Swinging) */
-.anime-girl {
+/* Shared animated gradient overlay for splash/lock screens */
+.animated-overlay {
+    background: linear-gradient(-45deg, #000000, #1a1a2e, #967bb6, #e6e6fa);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 6000; /* Highest priority */
+    transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
     position: fixed;
-    top: -10px; /* Pushed slightly up so it looks like she's hanging */
-    left: 20px;
-    height: 250px; /* Adjust this size if your image is too big/small */
-    transform-origin: top center; /* Makes her swing from the top, not the middle */
-    animation: swing 4s ease-in-out infinite alternate;
-    z-index: 50;
-    filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.2)); /* Soft shadow */
-}
-
-@keyframes swing {
-    0% { transform: rotate(10deg); }
-    100% { transform: rotate(-10deg); }
-}
-
-/* The Anime Boy (Bottom Right Corner) */
-.anime-boy {
-    position: fixed;
-    bottom: -10px; /* Grounded at the bottom */
-    right: 20px;
-    height: 300px; /* Adjust size if needed */
-    z-index: 50;
-    animation: floatBoy 3s ease-in-out infinite alternate;
-    filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.2));
-}
-
-@keyframes floatBoy {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-10px); }
-}
-
-/* =========================================
-   GLASSMORPHISM MAIN CARD
-   ========================================= */
-.glass-card {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 30px;
-    padding: 50px 40px;
-    max-width: 600px;
+    top: 0;
+    left: 0;
     width: 100%;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 10;
-}
-
-.romantic-heading {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-    color: #d1495b;
-    margin-bottom: 5px;
-}
-
-.subtitle {
-    font-size: 1rem;
-    color: #6a4c93;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-.heartbeat {
-    display: inline-block;
-    animation: heartbeat 1.5s infinite;
-}
-@keyframes heartbeat {
-    0%, 28%, 70% { transform: scale(1); }
-    14%, 42% { transform: scale(1.3); }
-}
-
-.love-message {
-    font-size: 1rem;
-    line-height: 1.8;
-    margin-bottom: 30px;
-}
-
-.section-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
-    color: #d1495b;
-    margin-bottom: 15px;
-}
-
-.reasons-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.reason-card {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 20px;
-    padding: 15px;
-    transition: all 0.4s ease;
-}
-.reason-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.8);
-}
-.reason-icon { font-size: 1.8rem; margin-bottom: 5px; }
-
-/* =========================================
-   GLOWING BUTTON
-   ========================================= */
-.glowing-btn {
-    background: linear-gradient(45deg, #ff758c, #ff7eb3);
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
+    height: 100%;
     cursor: pointer;
-    transition: all 0.4s ease;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
 }
-.glowing-btn:hover { transform: scale(1.05); }
 
-.btn-text, .hidden-text {
-    transition: all 0.4s ease;
-    display: inline-block;
-    width: 100%;
+/* --- STAGE 1: FRONT SPLASH SCREEN --- */
+#welcome-screen {
+    z-index: 6000;
 }
-.hidden-text {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(0.5);
-    opacity: 0;
+
+.panda-anim { font-size: 100px; animation: pandaFloat 3s ease-in-out infinite; }
+@keyframes pandaFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
 }
-.glowing-btn:hover .btn-text { opacity: 0; transform: scale(0.5); }
-.glowing-btn:hover .hidden-text { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.welcome-text { color: #e6e6fa; font-size: 46px; font-weight: 1000; margin-top: 10px; letter-spacing: 1px; text-align: center;}
+.tap-hint { color: #967bb6; margin-top: 20px; font-weight: bold; }
+
+/* --- STAGE 2: SECURE LOCK SCREEN --- */
+#lock-screen {
+    z-index: 5000; /* Just below splash */
+    cursor: default;
+}
+
+/* Floating background symbols (The "Cyber Rain" effect) */
+#bg-structures { position: absolute; width: 100%; height: 100%; pointer-events: none; }
+.floating-icon { position: absolute; color: rgba(230, 230, 250, 0.25); font-family: monospace; animation: drift linear infinite; }
+
+@keyframes drift {
+    from { transform: translateY(110vh) rotate(0deg); }
+    to { transform: translateY(-15vh) rotate(360deg); }
+}
+
+/* Sleek input box style */
+.lock-widget {
+    background: rgba(255, 255, 255, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 25px; 
+    width: 85%; 
+    max-width: 340px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    position: relative; 
+    z-index: 10; 
+    padding: 40px; 
+    text-align: center;
+}
+
+.lock-widget h2 { color: white; margin: 0 0 10px 0;}
+.lock-widget p { color: #e6e6fa; font-size: 14px; margin-bottom: 20px;}
+
+input[type="password"] { 
+    width: 100%; padding: 16px; margin-bottom: 20px; border-radius: 12px; border: none; 
+    text-align: center; font-size: 20px; background: #e6e6fa; color: #1a1a2e; outline: none; box-sizing: border-box;
+}
+.unlock-btn { 
+    background: linear-gradient(90deg, #ff4b82, #967bb6); color: white; border: none; 
+    padding: 16px; border-radius: 12px; width: 100%; font-weight: bold; cursor: pointer;
+}
+#error-msg { color: #ff6b6b; display: none; margin-top: 15px; font-weight: bold; }
 
 /* =========================================
-   JAVASCRIPT CLICK EFFECT
+   3. MAIN DASHBOARD & UNLOCKED VIEW
    ========================================= */
-@keyframes popHeart {
-    0% { transform: scale(0.5) translateY(0); opacity: 1; }
-    100% { transform: scale(1.5) translateY(-50px); opacity: 0; }
+#main-dashboard {
+    padding: 40px 20px 120px 20px; /* space for bar */
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    position: fixed; /* Fix it above the main bg image */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Dashboard content layer */
+    overflow-y: auto; /* Allow scrolling once unlocked */
+    opacity: 0;
+    transition: opacity 1s ease;
 }
-.click-heart-anim {
-    position: absolute;
-    pointer-events: none;
-    font-size: 24px;
-    animation: popHeart 1s ease-out forwards;
-    z-index: 9999;
+
+#main-dashboard h1 { 
+    color: white; 
+    font-size: 32px; 
+    margin-top: 20px; 
+    text-shadow: 0 2px 10px rgb(255, 167, 203);
+    text-align: center;
+    font-weight: 800;
+}
+
+#main-dashboard .subtitle {
+    color: #e6e6fa;
+    opacity: 0.8;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.glass-widget { 
+    background: rgb(137, 143, 255); 
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(100, 255, 218, 0.2); 
+    border-radius: 20px; padding: 25px; 
+    border-left: 6px solid #64ffda; 
+    margin-bottom: 25px; width: 95%; max-width: 420px; color: white;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    position: relative; overflow: hidden;
+    /* 1. Add a smooth transition timer */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* 2. Add the Hover Effect */
+.glass-widget:hover {
+    /* Zooms the widget slightly towards the screen */
+    transform: scale(1.05); 
+    /* Makes the shadow darker and wider so it looks like it's floating higher */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8); 
+    /* Optional: Make the border glow a bit more when hovered */
+    border: 1px solid rgba(100, 255, 218, 0.5);
+}
+
+.glass-widget h3 { margin-top: 0; color: #8989ff; margin-bottom: 8px;}
+.glass-widget p { opacity: 0.9; font-size: 14px;}
+
+/* --- THE BOTTOM NAVIGATION TAB BAR --- */
+.iphone-bar { 
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    height: 85px; 
+    background: rgba(196, 131, 240, 0.85); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
+    display: none; /* Hidden by default */
+    justify-content: space-around; 
+    align-items: center; 
+    z-index: 400; /* Behind splash and lock */
+    border-top: 1px solid rgb(0, 255, 251); 
+    padding-bottom: 20px; /* space for bar */
+}
+
+.tab { color: #000000; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; }
+.tab-icon { font-size: 24px; margin-bottom: 2px;}
+
+/* Animation trigger for blurring main bg */
+#main-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: filter 1s ease;
+    /* This tells it to run the color animation in a continuous loop */
+    animation: bgColorChange 20s infinite alternate;
+}
+
+/* This is the engine that changes the color every 5 seconds */
+@keyframes bgColorChange {
+    0%   { background-color: #aeffde; } /* 0s - Dark Blue */
+    25%  { background-color: hsl(334, 83%, 86%); } /* 5s - Slate Navy */
+    50%  { background-color: #b3bdff; } /* 10s - Midnight Purple */
+    75%  { background-color: #def0a8; } /* 15s - Deep Space */
+    100% { background-color: #eba3ff; } /* 20s - Charcoal Blue */
+    125% { background-color: #ffb3c1; } /* 25s - Cosmic Teal */
+    150% { background-color: #c1e1ff; } /* 30s - Galactic Gray */
+    175% { background-color: #d1a3ff; } /* 35s - Nebula Pink */
+    200% { background-color: #a3d1ff; } /* 40s - Starry Night */   
+    225% { background-color: #ffb3c1; } /* 45s - Cosmic Teal */
+    250% { background-color: #c1e1ff; } /* 50s - Galactic Gray */
+}
+
+/* =====================================
+   HUMAN BODY GLASS WIDGET STYLE
+===================================== */
+
+#neet-diagram-container{
+    width:95%;
+    max-width:420px;
+    margin-top:25px;
+
+    background: rgba(127, 134, 243, 0.777);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(100, 255, 218, 0.2);
+
+    border-left: 6px solid #64ffda;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    color:white;
+
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+
+    transition:0.3s ease;
+}
+
+#neet-diagram-container:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:0 15px 45px rgba(0,0,0,0.8);
+}
+
+.diagram-title{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#5555f9;
+
+    font-size:28px;
+
+    font-weight:800;
+    white-space: nowrap;
+
+    text-align:center;
+}
+
+
+.human-body{
+
+    position:relative;
+
+    width:260px;
+    height:580px;
+
+    margin:auto;
+
+    border-radius:150px;
+
+    background:rgba(255,255,255,0.08);
+
+    border:2px solid rgba(255,255,255,0.2);
+}
+
+.part{
+
+    position:absolute;
+
+    transform:translate(-50%,-50%);
+
+    border:none;
+
+    border-radius:50%;
+
+    width:52px;
+    height:52px;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    background:white;
+
+    transition:0.3s ease;
+}
+
+.part:hover{
+
+    transform:translate(-50%,-50%) scale(1.15);
+}
+
+#info-box{
+
+    margin-top:20px;
+
+    background:rgba(255,255,255,0.15);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    color:white;
+
+    text-align:center;
+
+    line-height:1.6;
+}
+
+#info-box h2{
+
+    margin-bottom:10px;
+
+    color:#64ffda;
+}
+
+/* CENTER THE DIAGRAM */
+
+#neet-diagram-container{
+
+    margin-left:auto;
+    margin-right:auto;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+/* KEEP BODY PERFECTLY CENTERED */
+
+.human-body{
+
+    margin:middle;
+}
+
+/* INFO BOX CENTER */
+
+#info-box{
+
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/* REMOVE GLASS FROM CONTAINER */
+
+#neet-diagram-container{
+
+    background:none !important;
+    border:none !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+    color:rgb(104, 129, 255) !important;
+}
+
+/* HUMAN BODY */
+
+.human-body{
+
+    position:relative;
+
+    width:260px;
+    height:580px;
+
+    margin:auto;
+
+    border-radius:150px;
+
+    background:rgb(231, 167, 243);
+
+    border:2px solid rgb(142, 166, 252);
+}
+
+/* GLASS EFFECT ONLY FOR INDICATORS */
+
+.part{
+
+    position:absolute;
+
+    transform:translate(-50%,-50%);
+
+    width:55px;
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    background:rgba(107, 255, 139, 0.971);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    border:1px solid rgba(88, 91, 255, 0.959);
+
+    box-shadow:
+    0 8px 32px rgba(0,0,0,0.3);
+
+    color:rgb(255, 0, 0);
+
+    transition:0.3s ease;
+}
+
+/* HOVER */
+
+.part:hover{
+
+    transform:
+    translate(-50%,-50%)
+    scale(1.15);
+
+    background:rgb(178, 110, 255);
+}
+html{
+    scroll-behavior:smooth;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+    margin-bottom:30px;
+
+    padding:14px 24px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:700;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    transition:0.3s ease;
+}
+
+.back-btn:hover{
+
+    transform:scale(1.08);
+
+    background:rgba(255,255,255,0.22);
 }

@@ -3,56 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To My Favorite Person ❤️</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <title>Panda Vault Elite</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <img src="anime-girl.png" alt="Anime Girl Hanging" class="anime-girl">
-    
-    <img src="anime-boy.png" alt="Anime Boy with Flower" class="anime-boy">
+    <!-- Background -->
+    <div id="main-bg-container"></div>
 
-    <div class="bg-animation">
-        <div class="floating-heart h1">🤍</div>
-        <div class="floating-heart h2">✨</div>
-        <div class="floating-heart h3">💖</div>
-        <div class="floating-heart h4">🌸</div>
-        <div class="floating-heart h5">✨</div>
-    </div>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="animated-overlay" onclick="proceedToLock()">
 
-    <div class="glass-card">
-        <h1 class="romantic-heading">To My Favorite Person <span class="heartbeat">❤️</span></h1>
-        <div class="subtitle">
-            Made with endless love by Panda
+        <div class="panda-anim">🐼</div>
+
+        <div class="welcome-text">
+            WELCOME PANDA ^_~
         </div>
 
-        <p class="love-message">
-            Every single day with you feels like a beautiful dream. You are the most special person in my universe—the one who brings out my brightest smiles and makes my life infinitely happier just by being in it. 
+        <div class="subtext">
+            ^_^.........^_~
+        </div>
+
+        <p class="tap-hint">
+            丅卂尸 丅口 乇𠘨丅尺丫 👆
         </p>
 
-        <h2 class="section-title">Reasons I Love You</h2>
-        <div class="reasons-grid">
-            <div class="reason-card">
-                <div class="reason-icon">🥺</div>
-                <p>The way you look at me makes me feel so incredibly special.</p>
-            </div>
-            <div class="reason-card">
-                <div class="reason-icon">🧸</div>
-                <p>Your warm hugs are my favorite place to hide from the world.</p>
-            </div>
-        </div>
-
-        <div class="btn-container">
-            <button class="glowing-btn">
-                <span class="btn-text">Forever Yours 💖</span>
-                <span class="hidden-text">You are my safest place ❤️</span>
-            </button>
-        </div>
     </div>
 
+    <!-- Lock Screen -->
+    <div id="lock-screen" class="animated-overlay">
+
+        <div id="bg-structures"></div>
+
+        <div class="lock-widget">
+
+            <h2>→»» ̵̶̱͉̳̠͢૮σ∂ε ρℓεαรε ««←</h2>
+
+            <p>ᴵ ᵂᴬᴺᵀ ᵀᴼ ᴷᴺᴼᵂ ᵂᴴᴼ ᵁ ᴿ</p>
+
+            <input 
+                type="password" 
+                id="passcode" 
+                placeholder="••••"
+            />
+
+            <button 
+                class="unlock-btn" 
+                onclick="checkPass()"
+            >
+                𝔼ℕ𝕋𝔼ℝ 𝕋𝕆 𝔾𝕆 𝕀ℕ
+            </button>
+
+            <p id="error-msg">
+                Oh Ohh! O_O Who Are you?(►__◄)
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <div id="main-dashboard">
+
+        <h1 class="shimmer-title">
+            █▓▒▒░░░ STUDY MATERIAL ░░░▒▒▓█
+        </h1>
+
+        <p class="subtitle">
+            Locked & Secured Hub
+        </p>
+
+        <!-- NEET Widget -->
+        <div class="glass-widget">
+
+            <h3>🧬 NEET Target: MBBS</h3>
+
+            <p>
+                Access your primary study targets, Biology active recall modules,
+                and daily mock tests.
+            </p>
+
+            <div class="resource-links">
+
+                <a href="#" class="resource-btn">
+                    📘 NCERT Biology Notes
+                </a>
+
+                <a href="#" class="resource-btn">
+                    📝 Daily Mock Test Link
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- VTU Widget -->
+        <div class="glass-widget">
+
+            <h3>💻 VTU CSE Prep</h3>
+
+            <p>
+                Python lab programs, Engineering Math notes,
+                and the 36 LPA placement roadmap.
+            </p>
+
+            <div class="resource-links">
+
+                <a href="#" class="resource-btn">
+                    🐍 Python Lab Repository
+                </a>
+
+                <a href="#" class="resource-btn">
+                    📐 Eng. Math Formulas
+                </a>
+                <a href="#" class="resource-btn">
+                    🚀 Placement Roadmap
+                </a>
+                <a href="diagram.html" class="resource-btn">
+                🖼️ View NEET Diagrams
+                </a>
+            
+            
+            </div>
+
+        </div>
+      
+        <!-- INTERACTIVE HUMAN BODY -->
+        <div id="neet-diagram-container">
+
+            <h1 class="diagram-title">
+            █▓▒▒░░░Interactive Human Body░░░▒▒▓█
+            </h1>
+
+            <div class="human-body">
+
+                <!-- Brain -->
+                <button 
+                    class="part"
+                    style="top:10%; left:50%;"
+                    onclick="showInfo(
+                        'Brain',
+                        'Controls memory, thinking, movement and coordination.'
+                    )"
+                >
+                         🧠
+                </button>
+
+                <!-- Eyes -->
+                <button 
+                    class="part"
+                    style="top:18%; left:50%;"
+                    onclick="showInfo(
+                        'Eyes',
+                        'Eyes help vision. Retina contains rods and cones.'
+                    )"
+                >
+                         👀
+                </button>
+
+                <!-- Heart -->
+                <button 
+                    class="part"
+                    style="top:32%; left:50%;"
+                    onclick="showInfo(
+                        'Heart',
+                        'Human heart has four chambers and pumps blood.'
+                    )"
+                >
+                         ❤️
+                </button>
+
+                <!-- Lungs -->
+                <button 
+                    class="part"
+                    style="top:28%; left:40%;"
+                    onclick="showInfo(
+                        'Lungs',
+                        'Responsible for oxygen and carbon dioxide exchange.'
+                    )"
+                >
+                         🫁
+                </button>
+
+                <!-- Liver -->
+                <button 
+                    class="part"
+                    style="top:42%; left:60%;"
+                    onclick="showInfo(
+                        'Liver',
+                        'Largest gland in the body. Produces bile.'
+                    )"
+                >
+                         🟤
+                </button>
+
+                <!-- Stomach -->
+                <button 
+                    class="part"
+                    style="top:48%; left:50%;"
+                    onclick="showInfo(
+                        'Stomach',
+                        'Breaks down food using acid and enzymes.'
+                    )"
+                >
+                         🍽️
+                </button>
+
+                <!-- Kidney -->
+                <button 
+                    class="part"
+                    style="top:58%; left:45%;"
+                    onclick="showInfo(
+                        'Kidneys',
+                        'Filters blood and forms urine.'
+                    )"
+                >
+                         🫘
+                </button>
+
+                <!-- Bones -->
+                <button 
+                    class="part"
+                    style="top:75%; left:50%;"
+                    onclick="showInfo(
+                        'Bones',
+                        'Provide support and structure to the body.'
+                    )"
+                >
+                         🦴
+                </button>
+
+            </div>
+
+            <!-- Explanation Box -->
+            <div id="info-box">
+                Click any organ to view explanation.
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="iphone-bar">
+
+        <div class="tab">
+            <div class="tab-icon">🧬</div>
+            NEET
+        </div>
+
+        <div class="tab">
+            <div class="tab-icon">📚</div>
+            Notes
+        </div>
+
+        <div class="tab">
+            <div class="tab-icon">🏠</div>
+            Home
+        </div>
+
+        <div class="tab">
+            <div class="tab-icon">💻</div>
+            CSE
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
+
 </body>
 </html>
