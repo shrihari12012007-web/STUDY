@@ -1,4 +1,4 @@
-# Panda Vault Elite (STUDY) - Interactive Student Resource Hub
+# :panda_face: Panda Vault Elite (STUDY) — Interactive Student Resource Hub :sparkles:
 
 <div align="center">
   <a href="https://shrihari12012007-web.github.io/STUDY/">
@@ -15,29 +15,29 @@
 
 ---
 
-## Live URLs
+## :globe_with_meridians: Live URLs
 
-- **Live Application (GitHub Pages):** [https://shrihari12012007-web.github.io/STUDY/](https://shrihari12012007-web.github.io/STUDY/)
-- **1-Click Render Deploy:** [Deploy on Render](https://render.com/deploy?repo=https://github.com/shrihari12012007-web/STUDY)
-- **GitHub Repository:** [https://github.com/shrihari12012007-web/STUDY](https://github.com/shrihari12012007-web/STUDY)
-
----
-
-## Features
-
-- **Animated Intro & Vault Access:** Playful animated welcome screen and smooth transition gates.
-- **Curated Study Materials:** Direct access to notes, reference diagrams, and engineering coursework.
-- **Instant Response:** Zero backend dependencies, runs entirely in the browser.
-- **One-Click Deploy:** Pre-configured with render.yaml for instant Render hosting.
+- :rocket: **Live Application (GitHub Pages):** [https://shrihari12012007-web.github.io/STUDY/](https://shrihari12012007-web.github.io/STUDY/)
+- :package: **1-Click Render Deploy:** [Deploy on Render](https://render.com/deploy?repo=https://github.com/shrihari12012007-web/STUDY)
+- :octocat: **GitHub Repository:** [https://github.com/shrihari12012007-web/STUDY](https://github.com/shrihari12012007-web/STUDY)
 
 ---
 
-## Tech Stack
+## :sparkles: Features
 
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript
-- **Animations:** CSS Keyframes & DOM transformations
-- **Hosting:** GitHub Pages & Render
+- :panda_face: **Animated Intro & Vault Access:** Playful animated welcome screen and smooth transition gates.
+- :books: **Curated Study Materials:** Direct access to notes, reference diagrams, and engineering coursework.
+- :zap: **Instant Response:** Zero backend dependencies, runs entirely in the browser.
+- :rocket: **One-Click Deploy:** Pre-configured with `render.yaml` for instant Render hosting.
 
 ---
 
-Developed by Shree Hari S B
+## :hammer_and_wrench: Tech Stack
+
+- :art: **Frontend:** HTML5, CSS3, Vanilla JavaScript
+- :sparkles: **Animations:** CSS Keyframes & DOM transformations
+- :cloud: **Hosting:** GitHub Pages & Render
+
+---
+
+:star: Developed by Shree Hari S B
